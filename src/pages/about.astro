@@ -1,0 +1,152 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Header } from "@/sections/Header";
+import { CTASection } from "@/sections/Footer/components/CTASection";
+import { Footer } from "@/sections/Footer";
+import { locations } from "@/data/locations";
+import { TrackedTelLink } from "@/components/TrackedTelLink";
+import { categories } from "@/data/categories";
+
+const canonical = "https://cuttingedgelandscapingperth.co.uk/about";
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${canonical}#webpage`,
+  url: canonical,
+  name: "About Cutting Edge | Perth & Dundee Outdoor Specialists",
+  description: "Meet Cutting Edge — locally trusted fencing, tree care, landscaping and roof cleaning specialists serving Perth, Dundee and Perthshire.",
+  isPartOf: { "@id": "https://cuttingedgelandscapingperth.co.uk/#website" },
+  about: { "@id": "https://cuttingedgelandscapingperth.co.uk/#business" },
+  inLanguage: "en-GB",
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://cuttingedgelandscapingperth.co.uk/" },
+    { "@type": "ListItem", position: 2, name: "About", item: canonical },
+  ],
+};
+---
+
+<BaseLayout
+  title="About Cutting Edge | Perth & Dundee Outdoor Specialists"
+  description="Meet Cutting Edge. Locally trusted fencing, tree care, landscaping and roof cleaning serving Perth, Dundee and surrounding areas. Free quotes available."
+  canonical={canonical}
+>
+  <div class="text-neutral-600 text-lg not-italic normal-nums font-medium accent-auto bg-[#323232] box-border caret-transparent block tracking-[normal] leading-[27px] list-outside list-disc min-h-full pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-manrope">
+    <Header client:load />
+    <main>
+      <section class="box-border caret-transparent pt-[160px] pb-[70px] md:pt-[220px] md:pb-[100px]">
+        <div class="box-border caret-transparent max-w-[980px] mx-auto px-5 md:px-8 text-center">
+          <p class="text-[#16a34a] text-sm font-semibold uppercase tracking-[0.18em] mb-4">About Us</p>
+          <h1 class="text-white text-[34px] font-bold leading-[44px] mb-5 md:text-[64px] md:leading-[78px]">
+            About Cutting Edge — Your Local Perth & Dundee Outdoor Specialists
+          </h1>
+          <p class="text-slate-200 max-w-[720px] mx-auto mb-8">Locally owned. Professionally trained. Here when you need us.</p>
+          <TrackedTelLink
+            client:load
+            showPhoneNumber
+            prefix="Call "
+            className="text-white text-base bg-[#15803d] font-bold border border-[#15803d] px-8 py-4 rounded-[50px] hover:bg-[#16a34a] transition-colors inline-flex"
+            trackingLocation="about"
+          />
+        </div>
+      </section>
+
+      <section class="box-border caret-transparent pb-[60px]">
+        <div class="box-border caret-transparent max-w-[980px] mx-auto px-5 md:px-8">
+          <div class="bg-white rounded-[20px] p-6 md:p-10 space-y-10">
+            <div>
+              <h2 class="text-gray-900 text-2xl font-bold mb-4 md:text-3xl">How Cutting Edge Got Started</h2>
+              <!-- Replace with authentic business story: How did you get into this industry? Why did you start this business? What's your connection to Perth and Dundee? -->
+              <p class="text-gray-700 leading-7">Cutting Edge helps customers across Perth, Dundee and Perthshire with the outdoor jobs that make properties safer, tidier and easier to enjoy. From new fences and old fence removal to hedge removal, turfing, patios, gravel and garden clearances, the team handles practical outdoor improvements with tidy workmanship.</p>
+            </div>
+
+            <div>
+              <h2 class="text-gray-900 text-2xl font-bold mb-4 md:text-3xl">Meet the Team</h2>
+              <!-- Replace with real owner/team information. Include verifiable credentials, licenses, and experience. Use a real photo — not stock. -->
+              <div class="flex flex-col md:flex-row gap-6 items-start">
+                <div class="w-32 h-32 rounded-full bg-gray-200 shrink-0 overflow-hidden">
+                  <img src="/about_cutting_edge.jpg" alt="Cutting Edge team at work in Perthshire" width="128" height="128" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div>
+                  <h3 class="text-gray-900 text-xl font-bold mb-1">Brad — Cutting Edge</h3>
+                  <p class="text-gray-600 text-sm mb-3">Owner & Outdoor Specialist</p>
+                  <p class="text-gray-700 leading-7">Brad leads Cutting Edge with a focus on reliable fencing, tree care, landscaping and roof cleaning work. Customers recommend the team for tidy finishing, clear quotes and practical advice on outdoor projects across Perthshire and Tayside.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-gray-900 text-2xl font-bold mb-4 md:text-3xl">Video Introduction</h2>
+              <!-- Embed owner introduction video here. A brief video builds trust and proves you're a real person. -->
+              <div class="rounded-xl bg-gray-100 border border-gray-200 p-8 text-center text-gray-500">
+                <p>Watch Brad introduce Cutting Edge — video embed placeholder</p>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-gray-900 text-2xl font-bold mb-4 md:text-3xl">Proudly Serving Perth & Dundee and Surrounding Areas</h2>
+              <p class="text-gray-700 leading-7 mb-4">Cutting Edge covers fencing, tree care, landscaping and roof cleaning across Perthshire and Tayside. <a href="/locations" class="text-[#16a34a] hover:underline font-medium">View all service areas</a>.</p>
+              <div class="grid grid-cols-2 gap-2 md:grid-cols-3">
+                {locations.map((location) => (
+                  <a href={`/locations/${location.slug}`} class="text-[#16a34a] hover:underline text-sm">{location.name}</a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-gray-900 text-2xl font-bold mb-4 md:text-3xl">Licensed, Insured, and Guaranteed</h2>
+              <!-- Add your license number(s), insurance details, certifications and years in business -->
+              <ul class="text-gray-700 space-y-2 list-disc pl-5">
+                <li>Free quotes on all outdoor work</li>
+                <li>Tidy workmanship and clear communication</li>
+                <li>Trusted by customers across Perth and Dundee</li>
+                <li>Licensed and insured — add your details here</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-gray-900 text-2xl font-bold mb-4 md:text-3xl">Our Services</h2>
+              <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                {categories.map((category) => (
+                  <a href={`/${category.slug}`} class="text-[#16a34a] hover:underline">{category.title}</a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-gray-900 text-2xl font-bold mb-4 md:text-3xl">Find Us on Google</h2>
+              <!-- Paste Google Business Profile embed code here -->
+              <div class="rounded-xl overflow-hidden border border-gray-200 h-64 bg-gray-100 flex items-center justify-center text-gray-500">
+                <p>Google Business Profile embed placeholder — paste your embed code here</p>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Cutting+Edge+Fencing+Tree+Care+Landscaping+Perth+Dundee" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-[#16a34a] hover:underline">View on Google Maps</a>
+            </div>
+
+            <div>
+              <h2 class="text-gray-900 text-2xl font-bold mb-4 md:text-3xl">Follow Us</h2>
+              <a href="https://www.facebook.com/cuttingedgeperth/" target="_blank" rel="noopener noreferrer" class="text-[#16a34a] hover:underline">Cutting Edge on Facebook</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="box-border caret-transparent pb-[80px]">
+        <div class="box-border caret-transparent max-w-[980px] mx-auto px-5 md:px-8">
+          <h2 class="text-white text-2xl font-bold mb-4 text-center md:text-3xl">See What Our Customers Say</h2>
+          <!-- Paste Google Reviews embed code here -->
+          <div class="rounded-xl bg-neutral-900/75 border border-white/10 p-8 text-center text-slate-300 min-h-[200px] flex items-center justify-center">
+            <p>Google Reviews widget placeholder — paste your embed code here. <a href="/reviews" class="text-[#16a34a] hover:underline">View reviews on our website</a></p>
+          </div>
+        </div>
+      </section>
+
+      <CTASection client:load />
+    </main>
+    <Footer client:load />
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</BaseLayout>

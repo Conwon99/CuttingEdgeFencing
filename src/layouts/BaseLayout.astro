@@ -1,0 +1,196 @@
+---
+import '../styles/global.css';
+import { MobileStickyContact } from '@/components/MobileStickyContact';
+import { locations } from '@/data/locations';
+import { TOTAL_REVIEW_COUNT } from '@/data/reviews';
+import { CANONICAL_PHONE_TEL } from '@/utils/phoneTracking';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  keywords?: string;
+  ogImage?: string;
+  robots?: string;
+}
+
+const { title, description, canonical, keywords, ogImage, robots } = Astro.props;
+const defaultDescription = "Cutting Edge provides fencing, tree care, landscaping, garden tidy-ups and roof cleaning across Perth, Dundee, Perthshire and surrounding areas.";
+const defaultKeywords = "fencing Perth, fencing Dundee, tree care Perth, landscaping Dundee, hedge removal, garden tidy ups, roof cleaning Perth, de mossing Dundee, Cutting Edge Perth";
+const siteUrl = "https://cuttingedgelandscapingperth.co.uk";
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+const defaultOgImage = ogImage || `${siteUrl}/hero_cutting_edge.jpg`;
+const logoUrl = `${siteUrl}/logo_cutting_edge.png`;
+const pageDescription = description || defaultDescription;
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["HomeAndConstructionBusiness", "LocalBusiness"],
+  "@id": `${siteUrl}/#business`,
+  "name": "Cutting Edge Fencing - Tree Care & Landscaping Specialists",
+  "alternateName": "Cutting Edge",
+  "description": defaultDescription,
+  "url": siteUrl,
+  "telephone": CANONICAL_PHONE_TEL,
+  "email": "cuttingedge.services@outlook.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Perth and Dundee",
+    "addressRegion": "Perthshire",
+    "addressCountry": "GB"
+  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Perthshire" },
+    ...locations.map((location) => ({
+      "@type": "Place",
+      "name": location.name,
+    })),
+  ],
+  "serviceType": [
+    "Fencing installation and replacement",
+    "Wooden fencing",
+    "Fence repairs",
+    "Fence panel replacement",
+    "Old fence removal and disposal",
+    "Tree care and hedge removal",
+    "Garden clearances and tidy-ups",
+    "Landscaping",
+    "Turfing",
+    "Patios",
+    "Gravel areas",
+    "Roof cleaning",
+    "De-mossing",
+    "Gutter clearing",
+    "Roof treatments"
+  ],
+  "sameAs": ["https://www.facebook.com/cuttingedgeperth/"],
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Cutting+Edge+Fencing+Tree+Care+Landscaping+Perth+Dundee",
+  "priceRange": "££",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": String(TOTAL_REVIEW_COUNT),
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Catherine Wilkie" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Wonderful service from Brad. Reliable and very efficient and leaves the place immaculate."
+    }
+  ],
+  "logo": {
+    "@type": "ImageObject",
+    "url": logoUrl
+  },
+  "image": [
+    logoUrl,
+    `${siteUrl}/hero_cutting_edge.jpg`,
+    `${siteUrl}/about_cutting_edge.jpg`,
+    `${siteUrl}/gal_cutting_edge_01.jpg`,
+    `${siteUrl}/gal_cutting_edge_02.jpg`,
+    `${siteUrl}/gal_cutting_edge_03.jpg`,
+    `${siteUrl}/gal_cutting_edge_04.jpg`,
+    `${siteUrl}/gal_cutting_edge_05.jpg`,
+    `${siteUrl}/gal_cutting_edge_06.jpg`
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": CANONICAL_PHONE_TEL,
+    "contactType": "customer service",
+    "areaServed": "GB-SCT",
+    "availableLanguage": "English"
+  }
+};
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  "name": "Cutting Edge",
+  "url": siteUrl,
+  "publisher": { "@id": `${siteUrl}/#business` },
+  "inLanguage": "en-GB"
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content={keywords || defaultKeywords} />
+    <meta name="author" content="Cutting Edge" />
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="GB-SCT" />
+    <meta name="geo.placename" content="Perth and Dundee" />
+    <meta name="theme-color" content="#15803d" />
+    <meta name="robots" content={robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Hreflang for UK targeting -->
+    <link rel="alternate" hreflang="en-gb" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={defaultOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Cutting Edge fencing, tree care and landscaping work in Perth and Dundee" />
+    <meta property="og:site_name" content="Cutting Edge" />
+    <meta property="og:locale" content="en_GB" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={defaultOgImage} />
+    <meta name="twitter:image:alt" content="Cutting Edge fencing, tree care and landscaping work in Perth and Dundee" />
+    
+    <link rel="icon" type="image/png" href="/logo_cutting_edge.png" />
+    <link rel="apple-touch-icon" href="/logo_cutting_edge.png" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VV87ESBXDF"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VV87ESBXDF');
+    </script>
+    <!-- Google Ads tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17859182544"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17859182544');
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  </head>
+  <body>
+    <slot />
+    <MobileStickyContact client:load />
+  </body>
+</html>
+
+

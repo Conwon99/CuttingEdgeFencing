@@ -1,0 +1,50 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Header } from "@/sections/Header";
+import { Hero } from "@/sections/Hero";
+import { ExperienceSection } from "@/sections/ExperienceSection";
+import { ServicesSection } from "@/sections/ServicesSection";
+import { HomepageContentSection } from "@/sections/HomepageContentSection";
+import { ServiceAreasSection } from "@/sections/ServiceAreasSection";
+import { ProjectsSection } from "@/sections/ProjectsSection";
+import { ReviewsSection } from "@/sections/ReviewsSection";
+import { FAQSection } from "@/sections/FAQSection";
+import { CTASection } from "@/sections/Footer/components/CTASection";
+import { Footer } from "@/sections/Footer";
+import { homepageFaqs, buildFaqSchema } from "@/data/faqs";
+
+const faqSchema = buildFaqSchema(homepageFaqs);
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://cuttingedgelandscapingperth.co.uk/#webpage",
+  url: "https://cuttingedgelandscapingperth.co.uk/",
+  name: "Fencing, Tree Care & Landscaping in Perth & Dundee | Cutting Edge",
+  description: "Cutting Edge provides fencing, tree care, landscaping, garden tidy-ups and roof cleaning across Perth, Dundee and Perthshire. Free quotes.",
+  isPartOf: { "@id": "https://cuttingedgelandscapingperth.co.uk/#website" },
+  about: { "@id": "https://cuttingedgelandscapingperth.co.uk/#business" },
+  inLanguage: "en-GB",
+};
+---
+
+<BaseLayout 
+  title="Cutting Edge | Fencing, Tree Care & Landscaping in Perth & Dundee"
+  description="Cutting Edge provides fencing, tree care, landscaping, garden tidy-ups and roof cleaning across Perth, Dundee and Perthshire. Free quotes."
+  canonical="https://cuttingedgelandscapingperth.co.uk/"
+>
+    <div class="text-neutral-600 text-lg not-italic normal-nums font-medium accent-auto bg-[#323232] box-border caret-transparent block tracking-[normal] leading-[27px] list-outside list-disc min-h-full pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-manrope">
+      <Header client:load />
+      <Hero client:load />
+      <ExperienceSection client:load />
+      <ServicesSection client:load />
+      <HomepageContentSection client:load />
+      <ProjectsSection client:load />
+      <ServiceAreasSection client:load />
+      <ReviewsSection client:load />
+      <FAQSection client:load />
+      <CTASection client:load />
+      <Footer client:load />
+    </div>
+    <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</BaseLayout>
