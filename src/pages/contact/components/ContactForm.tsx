@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { trackFormStart } from "@/utils/analytics";
 import { getFormServiceOptions } from "@/data/categories";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mzdqwzno";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xaqgbokg";
 
 export const ContactForm = () => {
   const serviceOptions = getFormServiceOptions();
