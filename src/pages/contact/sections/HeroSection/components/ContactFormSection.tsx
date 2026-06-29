@@ -1,12 +1,18 @@
 import { ContactForm } from "@/pages/contact/components/ContactForm";
+import { PhoneLink } from "@/components/PhoneLink";
 
 export const ContactFormSection = () => {
   return (
     <div className="box-border caret-transparent mb-[50px] md:mb-[70px]">
       <div className="bg-[#15803d] box-border caret-transparent p-4 sm:p-5 rounded-[20px] md:p-10 max-w-[800px] mx-auto border-2 border-[#15803d] shadow-lg">
-        <h2 className="text-white text-lg font-bold box-border caret-transparent leading-[23.4px] mb-2.5 md:text-[22px] md:leading-[28.6px]">
-          We're here for all your fencing and decking needs
-        </h2>
+        <div className="flex justify-center mb-5">
+          <PhoneLink
+            iconSrc="https://c.animaapp.com/mhooxuovKXaEfR/assets/670f86de88858acaf330ddd9_phone.svg"
+            iconAlt="Phone icon - Call Cutting Edge"
+            variant="hero"
+            trackingLocation="contact-form"
+          />
+        </div>
         <div className="box-border caret-transparent mt-[30px] mb-[15px]">
           <ContactForm />
           <div
