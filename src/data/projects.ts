@@ -9,6 +9,7 @@ export type ProjectPage = {
   location: string;
   image: string;
   imageAlt: string;
+  categorySlug?: string;
 };
 
 export const projects: ProjectPage[] = [
@@ -31,6 +32,7 @@ export const projects: ProjectPage[] = [
     location: "Perthshire",
     image: "/gal_cutting_edge_01.jpg",
     imageAlt: "New timber garden fencing installed by Cutting Edge in Perthshire",
+    categorySlug: "fencing-perth-dundee",
   },
   {
     slug: "fence-panels-perth-dundee",
@@ -51,6 +53,7 @@ export const projects: ProjectPage[] = [
     location: "Perth & Dundee",
     image: "/gal_cutting_edge_02.jpg",
     imageAlt: "Fresh wooden fence panels and garden boundary work by Cutting Edge",
+    categorySlug: "fencing-perth-dundee",
   },
   {
     slug: "garden-fencing-improvement",
@@ -71,6 +74,7 @@ export const projects: ProjectPage[] = [
     location: "Perthshire",
     image: "/gal_cutting_edge_03.jpg",
     imageAlt: "Garden fencing and outdoor improvement project near Perth and Dundee",
+    categorySlug: "fencing-perth-dundee",
   },
   {
     slug: "fencing-landscaping-perthshire",
@@ -111,6 +115,7 @@ export const projects: ProjectPage[] = [
     location: "Perth",
     image: "/gal_cutting_edge_05.jpg",
     imageAlt: "Tidy garden transformation and fence replacement project",
+    categorySlug: "landscaping-perth-dundee",
   },
   {
     slug: "outdoor-fencing-perthshire",
@@ -131,7 +136,11 @@ export const projects: ProjectPage[] = [
     location: "Perthshire",
     image: "/gal_cutting_edge_06.jpg",
     imageAlt: "Outdoor fencing and garden work completed across Perthshire",
+    categorySlug: "landscaping-perth-dundee",
   },
 ];
 
 export const getProjectBySlug = (slug: string) => projects.find((project) => project.slug === slug);
+
+export const getProjectsForCategory = (categorySlug: string) =>
+  projects.filter((project) => project.categorySlug === categorySlug);
