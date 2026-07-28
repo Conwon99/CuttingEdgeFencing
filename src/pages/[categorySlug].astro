@@ -6,6 +6,8 @@ import { Footer } from "@/sections/Footer";
 import { categories, getServicesForCategory, type ServiceCategory } from "@/data/categories";
 import { locations } from "@/data/locations";
 import { getLocationServicePath } from "@/data/locationServices";
+import { getProjectsForCategory } from "@/data/projects";
+import { TOTAL_REVIEW_COUNT } from "@/data/reviews";
 import { TrackedTelLink } from "@/components/TrackedTelLink";
 
 export function getStaticPaths() {
@@ -16,8 +18,10 @@ export function getStaticPaths() {
 }
 
 const { category } = Astro.props as { category: ServiceCategory };
-const canonical = `https://cuttingedgelandscapingperth.co.uk/${category.slug}`;
+const siteUrl = "https://cuttingedgelandscapingperth.co.uk";
+const canonical = `${siteUrl}/${category.slug}`;
 const categoryServices = getServicesForCategory(category);
+const categoryProjects = getProjectsForCategory(category.slug).slice(0, 4);
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -31,6 +35,9 @@ const serviceSchema = {
     { "@type": "City", name: "Dundee" },
     { "@type": "AdministrativeArea", name: "Perthshire" },
   ],
+  image: [category.image, ...categoryProjects.map((project) => project.image)].map(
+    (path) => `${siteUrl}${path}`,
+  ),
 };
 const pageSchema = {
   "@context": "https://schema.org",
@@ -90,6 +97,7 @@ const breadcrumbSchema = {
         <div class="box-border caret-transparent max-w-[980px] mx-auto px-[15px] md:px-[30px]">
           <div class="bg-white rounded-[20px] p-6 md:p-10 mb-10">
             <p class="text-gray-700 leading-7 mb-6">{category.localParagraph}</p>
+            <p class="text-gray-700 leading-7 mb-6">Rated 5 stars from {TOTAL_REVIEW_COUNT}+ customer reviews across Perth, Dundee and Perthshire — read more on our <a href="/reviews" class="text-[#16a34a] hover:underline font-medium">reviews page</a>.</p>
             <p class="text-gray-700 leading-7">Browse our <a href="/services" class="text-[#16a34a] hover:underline font-medium">full services list</a> or contact Cutting Edge for a free quote across Perth, Dundee and surrounding areas.</p>
           </div>
 
@@ -103,6 +111,30 @@ const breadcrumbSchema = {
               </a>
             ))}
           </div>
+
+          {categoryProjects.length > 0 && (
+            <>
+              <h2 class="text-white text-2xl font-bold mb-6 md:text-4xl">Recent {category.name} Work</h2>
+              <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mb-10">
+                {categoryProjects.map((project) => (
+                  <a href={`/projects/${project.slug}`} aria-label={`View project: ${project.title}`} class="rounded-xl overflow-hidden bg-neutral-900/75 border border-white/10 hover:border-[#16a34a] transition-colors block">
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt}
+                      width={400}
+                      height={300}
+                      loading="lazy"
+                      class="w-full h-40 object-cover"
+                    />
+                    <div class="p-4">
+                      <h3 class="text-white text-sm font-bold mb-1">{project.title}</h3>
+                      <span class="text-[#16a34a] text-xs font-semibold">View project →</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </>
+          )}
 
           <h2 class="text-white text-2xl font-bold mb-6 md:text-4xl">{category.name} by Area</h2>
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 mb-10">
