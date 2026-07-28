@@ -126,6 +126,24 @@ const breadcrumbSchema = {
             <p class="text-gray-700 box-border caret-transparent mb-6 leading-7">{page.localParagraph}</p>
             <p class="text-gray-700 box-border caret-transparent mb-8 leading-7">{page.bodyParagraph}</p>
 
+            {page.signsYouNeed.length > 0 && (
+              <>
+                <h3 class="text-gray-900 text-xl font-bold box-border caret-transparent mb-3">Signs You Need {page.category.name} Work in {page.location.name}</h3>
+                {page.signsYouNeed.map((item) => (
+                  <p class="text-gray-700 box-border caret-transparent mb-4 leading-7"><strong>{item.title}:</strong> {item.text}</p>
+                ))}
+              </>
+            )}
+
+            {page.whatToExpect.length > 0 && (
+              <>
+                <h3 class="text-gray-900 text-xl font-bold box-border caret-transparent mb-3">What to Expect in {page.location.name}</h3>
+                {page.whatToExpect.map((item) => (
+                  <p class="text-gray-700 box-border caret-transparent mb-4 leading-7"><strong>{item.title}:</strong> {item.text}</p>
+                ))}
+              </>
+            )}
+
             <h3 class="text-gray-900 text-xl font-bold box-border caret-transparent mb-3">Related services in {page.location.name}</h3>
             <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 mb-8">
               {categoryServices.map((service) => (
