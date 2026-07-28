@@ -93,8 +93,9 @@ export const projects: ProjectPage[] = [
     ],
     serviceType: "Landscaping",
     location: "Perthshire",
-    image: "/gal_cutting_edge_04.jpg",
-    imageAlt: "Completed fencing and landscaping work by Cutting Edge",
+    image: "/gal_cutting_edge_01.jpg",
+    imageAlt: "New timber fence and freshly turfed lawn completed together in Perthshire",
+    categorySlug: "landscaping-perth-dundee",
   },
   {
     slug: "garden-transformation-perth",
