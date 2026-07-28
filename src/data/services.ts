@@ -25,8 +25,6 @@ export type ServicePage = {
   }>;
 };
 
-const serviceIconBase = "https://c.animaapp.com/mial13ktyN5Jkh/assets";
-
 export const services: ServicePage[] = [
   {
     slug: "fencing-installation-replacement",
@@ -36,7 +34,7 @@ export const services: ServicePage[] = [
     parentCategorySlug: "fencing-perth-dundee",
     description: "Professional fencing installation and panel replacement in Perth, Dundee and Perthshire. Timber fencing, repairs and disposal. Free quotes.",
     cardDescription: "New fencing, wooden fencing, panel replacement and tired fence upgrades completed neatly across Perth, Dundee and surrounding areas.",
-    iconUrl: "https://c.animaapp.com/mhqqhnhjBr0jWt/assets/670f922acd8bf79374aa2c10_service-01.svg",
+    iconUrl: "/icon-fencing.svg",
     iconAlt: "Fencing service icon",
     image: "/gal_cutting_edge_01.jpg",
     imageAlt: "Timber garden fencing installed by Cutting Edge in Perthshire",
@@ -78,7 +76,7 @@ export const services: ServicePage[] = [
     parentCategorySlug: "fencing-perth-dundee",
     description: "Fence repairs and old fencing disposal in Perth, Dundee and Perthshire. Storm damage, panel replacement and tidy workmanship. Free quotes.",
     cardDescription: "Repairs, replacement sections, old fence removal and disposal handled with tidy workmanship and practical advice.",
-    iconUrl: `${serviceIconBase}/670f922a6c5c1d8102612221_service-02.svg`,
+    iconUrl: "/icon-fence-repairs.svg",
     iconAlt: "Fence repairs service icon",
     image: "/gal_cutting_edge_02.jpg",
     imageAlt: "Wooden fence repair and garden boundary work by Cutting Edge",
@@ -124,7 +122,7 @@ export const services: ServicePage[] = [
     parentCategorySlug: "tree-care-perth-dundee",
     description: "Tree care, hedge removal and garden clearances in Perth, Dundee and Perthshire. Reclaim overgrown outdoor spaces. Free quotes available.",
     cardDescription: "Tree care, hedge removal, garden clearances and tidy-ups to help reclaim outdoor spaces and get gardens ready for the season.",
-    iconUrl: `${serviceIconBase}/670f922a0e27a271e441091e_service-03.svg`,
+    iconUrl: "/icon-tree-care.svg",
     iconAlt: "Tree care and hedge removal service icon",
     image: "/gal_cutting_edge_03.jpg",
     imageAlt: "Garden clearance and outdoor tidy-up work by Cutting Edge",
@@ -166,7 +164,7 @@ export const services: ServicePage[] = [
     parentCategorySlug: "landscaping-perth-dundee",
     description: "Landscaping, patio installation and garden makeovers in Perth, Dundee and Perthshire. Turfing, gravel areas and tidy-ups. Free quotes.",
     cardDescription: "Garden transformations including turfing, patios, gravel areas and outdoor improvements planned around your space.",
-    iconUrl: `${serviceIconBase}/670f922a0e27a271e441091e_service-03.svg`,
+    iconUrl: "/icon-landscaping.svg",
     iconAlt: "Landscaping service icon",
     image: "/gal_cutting_edge_05.jpg",
     imageAlt: "Landscaping and garden makeover completed by Cutting Edge",
@@ -212,7 +210,7 @@ export const services: ServicePage[] = [
     parentCategorySlug: "roof-cleaning-perth-dundee",
     description: "Roof cleaning, de-mossing and gutter clearing in Perth, Dundee and Perthshire. Hand-cleaned roof treatments. Free quotes from Cutting Edge.",
     cardDescription: "Hand-cleaned roofs, full de-mossing, gutter clearing and roof treatments to help protect your property and improve kerb appeal.",
-    iconUrl: `${serviceIconBase}/670f922ca00205c2937593ea_service-04.svg`,
+    iconUrl: "/icon-roof-cleaning.svg",
     iconAlt: "Roof cleaning service icon",
     image: "/gal_cutting_edge_04.jpg",
     imageAlt: "Roof cleaning and exterior property care by Cutting Edge",
@@ -254,7 +252,7 @@ export const services: ServicePage[] = [
     parentCategorySlug: null,
     description: "Request a free quote from Cutting Edge for fencing, tree care, landscaping or roof cleaning across Perth, Dundee and Perthshire.",
     cardDescription: "Message or call Cutting Edge to discuss fencing, garden, landscaping or roof cleaning work and arrange a free quote.",
-    iconUrl: "https://c.animaapp.com/mhqqhnhjBr0jWt/assets/670f922acd8bf79374aa2c10_service-01.svg",
+    iconUrl: "/icon-free-quotes.svg",
     iconAlt: "Free quote service icon",
     image: "/gal_cutting_edge_06.jpg",
     imageAlt: "Outdoor fencing and garden work completed by Cutting Edge",
