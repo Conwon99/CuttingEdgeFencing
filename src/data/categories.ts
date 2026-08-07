@@ -33,7 +33,7 @@ export const categories: ServiceCategory[] = [
     localParagraph: "Gardens across Perth, Dundee and Angus often deal with fast-growing hedges, storm-damaged branches and seasonal clear-up work. If you are searching for a tree care specialist or hedge removal near Perth, Cutting Edge helps local customers reclaim outdoor space without leaving a mess behind.",
     image: "/gal_cutting_edge_03.jpg",
     imageAlt: "Garden clearance and hedge removal by Cutting Edge",
-    serviceSlugs: ["tree-care-hedge-removal"],
+    serviceSlugs: ["tree-care-hedge-removal", "tree-removal", "tree-cutting"],
   },
   {
     slug: "landscaping-perth-dundee",
