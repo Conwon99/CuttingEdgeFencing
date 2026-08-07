@@ -9,6 +9,7 @@ import { getLocationServicePath } from "@/data/locationServices";
 import { getProjectsForCategory } from "@/data/projects";
 import { TOTAL_REVIEW_COUNT } from "@/data/reviews";
 import { TrackedTelLink } from "@/components/TrackedTelLink";
+import { getTreeServiceLocationPath } from "@/data/treeServiceLocations";
 
 export function getStaticPaths() {
   return categories.map((category) => ({
@@ -142,6 +143,20 @@ const breadcrumbSchema = {
               <a href={getLocationServicePath(location.slug, category.slug)} class="text-[#16a34a] hover:underline font-medium">{category.name} in {location.name}</a>
             ))}
           </div>
+
+          {category.slug === "tree-care-perth-dundee" && (
+            <>
+              <h2 class="text-white text-2xl font-bold mb-6 md:text-4xl">Tree Removal &amp; Tree Cutting by Area</h2>
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 mb-10">
+                {locations.map((location) => (
+                  <>
+                    <a href={getTreeServiceLocationPath(location.slug, "tree-removal")} class="text-[#16a34a] hover:underline font-medium">Tree Removal in {location.name}</a>
+                    <a href={getTreeServiceLocationPath(location.slug, "tree-cutting")} class="text-[#16a34a] hover:underline font-medium">Tree Cutting in {location.name}</a>
+                  </>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

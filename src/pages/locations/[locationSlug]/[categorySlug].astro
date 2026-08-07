@@ -11,6 +11,7 @@ import {
   type LocationServicePage,
 } from "@/data/locationServices";
 import { buildFaqSchema } from "@/data/faqs";
+import { getTreeServiceLocationPath } from "@/data/treeServiceLocations";
 
 export function getStaticPaths() {
   return locationServicePages.map((page) => ({
@@ -150,6 +151,16 @@ const breadcrumbSchema = {
                 <a href={`/services/${service.slug}`} class="text-[#16a34a] hover:underline font-medium">{service.title}</a>
               ))}
             </div>
+
+            {page.categorySlug === "tree-care-perth-dundee" && (
+              <>
+                <h3 class="text-gray-900 text-xl font-bold box-border caret-transparent mb-3">Tree Removal &amp; Tree Cutting in {page.location.name}</h3>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 mb-8">
+                  <a href={getTreeServiceLocationPath(page.locationSlug, "tree-removal")} class="text-[#16a34a] hover:underline font-medium">Tree Removal in {page.location.name}</a>
+                  <a href={getTreeServiceLocationPath(page.locationSlug, "tree-cutting")} class="text-[#16a34a] hover:underline font-medium">Tree Cutting in {page.location.name}</a>
+                </div>
+              </>
+            )}
 
             <p class="text-gray-700 box-border caret-transparent mb-6 leading-7">
               View all <a href={`/${page.categorySlug}`} class="text-[#16a34a] hover:underline font-medium">{page.category.title}</a>,
