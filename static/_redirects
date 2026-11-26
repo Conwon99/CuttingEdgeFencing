@@ -10,3 +10,65 @@
 /admin/*      /index.html   404
 /api/*        /index.html   404
 
+
+# Doorway pages removed Nov 2026 (zero Search Console clicks Aug 2025 - Nov 2026)
+# Location + service pages -> main service page
+/locations/dundee/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/dundee/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/dundee/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/dundee/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/perth/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/perth/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/perth/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/broughty-ferry/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/broughty-ferry/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/broughty-ferry/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/broughty-ferry/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/carnoustie/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/carnoustie/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/carnoustie/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/blairgowrie-and-rattray/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/blairgowrie-and-rattray/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/blairgowrie-and-rattray/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/crieff/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/crieff/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/crieff/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/crieff/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/auchterarder/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/auchterarder/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/auchterarder/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/auchterarder/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/kinross/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/kinross/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/kinross/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/scone/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/scone/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/scone/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/monifieth/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/monifieth/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/monifieth/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/bridge-of-earn/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/bridge-of-earn/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/bridge-of-earn/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/bridge-of-earn/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/pitlochry/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/pitlochry/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/pitlochry/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/alyth/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/alyth/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/alyth/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/coupar-angus/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/coupar-angus/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/coupar-angus/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/coupar-angus/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+/locations/milnathort/fencing-perth-dundee  /fencing-perth-dundee  301
+/locations/milnathort/tree-care-perth-dundee  /tree-care-perth-dundee  301
+/locations/milnathort/landscaping-perth-dundee  /landscaping-perth-dundee  301
+/locations/milnathort/roof-cleaning-perth-dundee  /roof-cleaning-perth-dundee  301
+# Town pages -> locations hub
+/locations/carnoustie  /locations  301
+/locations/auchterarder  /locations  301
+/locations/scone  /locations  301
+/locations/pitlochry  /locations  301
+/locations/coupar-angus  /locations  301
+/locations/milnathort  /locations  301

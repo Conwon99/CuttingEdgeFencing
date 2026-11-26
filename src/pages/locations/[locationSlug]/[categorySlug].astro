@@ -11,6 +11,7 @@ import {
   type LocationServicePage,
 } from "@/data/locationServices";
 import { buildFaqSchema } from "@/data/faqs";
+import { hasLocationPage } from "@/data/locations";
 
 export function getStaticPaths() {
   return locationServicePages.map((page) => ({
@@ -63,26 +64,23 @@ const placeSchema = {
   description: page.localParagraph,
 };
 const faqSchema = buildFaqSchema(page.faqs);
+const breadcrumbItems = [
+  { name: "Home", item: "https://cuttingedgelandscapingperth.co.uk/" },
+  { name: "Locations", item: "https://cuttingedgelandscapingperth.co.uk/locations" },
+  ...(hasLocationPage(page.locationSlug)
+    ? [{ name: page.location.name, item: `https://cuttingedgelandscapingperth.co.uk/locations/${page.locationSlug}` }]
+    : []),
+  { name: page.category.name, item: `https://cuttingedgelandscapingperth.co.uk/${page.categorySlug}` },
+  { name: page.h1, item: canonical },
+];
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://cuttingedgelandscapingperth.co.uk/" },
-    { "@type": "ListItem", position: 2, name: "Locations", item: "https://cuttingedgelandscapingperth.co.uk/locations" },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: page.location.name,
-      item: `https://cuttingedgelandscapingperth.co.uk/locations/${page.locationSlug}`,
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      name: page.category.name,
-      item: `https://cuttingedgelandscapingperth.co.uk/${page.categorySlug}`,
-    },
-    { "@type": "ListItem", position: 5, name: page.h1, item: canonical },
-  ],
+  itemListElement: breadcrumbItems.map((crumb, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    ...crumb,
+  })),
 };
 ---
 
@@ -153,7 +151,9 @@ const breadcrumbSchema = {
 
             <p class="text-gray-700 box-border caret-transparent mb-6 leading-7">
               View all <a href={`/${page.categorySlug}`} class="text-[#16a34a] hover:underline font-medium">{page.category.title}</a>,
-              the <a href={`/locations/${page.locationSlug}`} class="text-[#16a34a] hover:underline font-medium">{page.location.name} service area page</a>,
+              {hasLocationPage(page.locationSlug)
+                ? <>the <a href={`/locations/${page.locationSlug}`} class="text-[#16a34a] hover:underline font-medium">{page.location.name} service area page</a>,</>
+                : <>the <a href="/locations" class="text-[#16a34a] hover:underline font-medium">areas we cover</a>,</>}
               or <a href="/contact" class="text-[#16a34a] hover:underline font-medium">contact Cutting Edge</a> for a free quote.
             </p>
 
