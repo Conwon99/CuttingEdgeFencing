@@ -161,11 +161,32 @@ const locationEntries = [
   },
 ];
 
-export const locations: LocationPage[] = locationEntries.map((location) => ({
+// Every town Cutting Edge serves (used for areaServed schema and to build
+// location-service pages). Not every town gets its own page.
+export const allLocations: LocationPage[] = locationEntries.map((location) => ({
   ...location,
   title: `Fencing & Garden Services in ${location.shortName ?? location.name} | Cutting Edge`,
   locationFaqs: makeLocationFaqs(location.name),
 }));
+
+// Town pages removed Nov 2026: zero Search Console clicks since Aug 2025.
+// 301s live in static/_redirects.
+export const RETIRED_LOCATION_SLUGS = new Set([
+  "carnoustie",
+  "auchterarder",
+  "scone",
+  "pitlochry",
+  "coupar-angus",
+  "milnathort",
+]);
+
+// Towns that still have a /locations/<slug> page.
+export const locations: LocationPage[] = allLocations.filter(
+  (location) => !RETIRED_LOCATION_SLUGS.has(location.slug),
+);
+
+export const hasLocationPage = (slug: string) =>
+  locations.some((location) => location.slug === slug);
 
 export const getNearbyLocationLinks = (location: LocationPage) =>
   location.nearby

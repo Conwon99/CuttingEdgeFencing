@@ -4,8 +4,8 @@ import { Header } from "@/sections/Header";
 import { CTASection } from "@/sections/Footer/components/CTASection";
 import { Footer } from "@/sections/Footer";
 import { categories, getServicesForCategory, type ServiceCategory } from "@/data/categories";
-import { locations } from "@/data/locations";
-import { getLocationServicePath } from "@/data/locationServices";
+import { allLocations } from "@/data/locations";
+import { getLocationServicePath, hasLocationServicePage } from "@/data/locationServices";
 import { getProjectsForCategory } from "@/data/projects";
 import { TOTAL_REVIEW_COUNT } from "@/data/reviews";
 import { TrackedTelLink } from "@/components/TrackedTelLink";
@@ -21,6 +21,7 @@ const { category } = Astro.props as { category: ServiceCategory };
 const siteUrl = "https://cuttingedgelandscapingperth.co.uk";
 const canonical = `${siteUrl}/${category.slug}`;
 const categoryServices = getServicesForCategory(category);
+const areaLocations = allLocations.filter((location) => hasLocationServicePage(location.slug, category.slug));
 const categoryProjects = getProjectsForCategory(category.slug).slice(0, 4);
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -136,12 +137,16 @@ const breadcrumbSchema = {
             </>
           )}
 
-          <h2 class="text-white text-2xl font-bold mb-6 md:text-4xl">{category.name} by Area</h2>
-          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 mb-10">
-            {locations.map((location) => (
-              <a href={getLocationServicePath(location.slug, category.slug)} class="text-[#16a34a] hover:underline font-medium">{category.name} in {location.name}</a>
-            ))}
-          </div>
+          {areaLocations.length > 0 && (
+            <>
+              <h2 class="text-white text-2xl font-bold mb-6 md:text-4xl">{category.name} by Area</h2>
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 mb-10">
+                {areaLocations.map((location) => (
+                  <a href={getLocationServicePath(location.slug, category.slug)} class="text-[#16a34a] hover:underline font-medium">{category.name} in {location.name}</a>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

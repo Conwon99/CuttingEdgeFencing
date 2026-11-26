@@ -134,13 +134,7 @@ export const Footer = () => {
 
                 ))}
 
-                <a href="/locations/perth/fencing-perth-dundee" className="text-white/60 text-xs box-border caret-transparent hover:text-[#16a34a] pl-3 transition-colors duration-300">Fencing in Perth</a>
-
-                <a href="/locations/dundee/fencing-perth-dundee" className="text-white/60 text-xs box-border caret-transparent hover:text-[#16a34a] pl-3 transition-colors duration-300">Fencing in Dundee</a>
-
                 <a href="/locations/perth/landscaping-perth-dundee" className="text-white/60 text-xs box-border caret-transparent hover:text-[#16a34a] pl-3 transition-colors duration-300">Landscaping in Perth</a>
-
-                <a href="/locations/dundee/landscaping-perth-dundee" className="text-white/60 text-xs box-border caret-transparent hover:text-[#16a34a] pl-3 transition-colors duration-300">Landscaping in Dundee</a>
 
                 {services.filter((s) => s.slug !== "free-quotes").map((service) => (
 

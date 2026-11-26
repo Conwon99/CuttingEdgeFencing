@@ -1,5 +1,5 @@
 import { categories, getServicesForCategory, type ServiceCategory } from "@/data/categories";
-import { locations, getNearbyLocationLinks, type LocationPage } from "@/data/locations";
+import { allLocations, type LocationPage } from "@/data/locations";
 import { truncateMeta } from "@/data/site";
 
 export type LocationServiceFaq = {
@@ -252,12 +252,31 @@ const buildLocationServicePage = (
   };
 };
 
-export const locationServicePages: LocationServicePage[] = locations.flatMap((location, locationIndex) =>
-  categoryConfigs.map((config) => {
-    const category = categories.find((item) => item.slug === config.slug)!;
-    return buildLocationServicePage(location, config, category, locationIndex);
-  }),
-);
+// Location + service pages kept in Nov 2026: the only ones with at least one
+// Search Console click since Aug 2025. All others were removed as doorway
+// pages and 301'd (see static/_redirects).
+const KEPT_LOCATION_SERVICE_PAGES = new Set([
+  "alyth/fencing-perth-dundee",
+  "blairgowrie-and-rattray/tree-care-perth-dundee",
+  "carnoustie/tree-care-perth-dundee",
+  "kinross/tree-care-perth-dundee",
+  "monifieth/roof-cleaning-perth-dundee",
+  "perth/landscaping-perth-dundee",
+  "pitlochry/fencing-perth-dundee",
+  "scone/tree-care-perth-dundee",
+]);
+
+export const locationServicePages: LocationServicePage[] = allLocations
+  .flatMap((location, locationIndex) =>
+    categoryConfigs.map((config) => {
+      const category = categories.find((item) => item.slug === config.slug)!;
+      return buildLocationServicePage(location, config, category, locationIndex);
+    }),
+  )
+  .filter((page) => KEPT_LOCATION_SERVICE_PAGES.has(`${page.locationSlug}/${page.categorySlug}`));
+
+export const hasLocationServicePage = (locationSlug: string, categorySlug: string) =>
+  KEPT_LOCATION_SERVICE_PAGES.has(`${locationSlug}/${categorySlug}`);
 
 export const getLocationServicePage = (locationSlug: string, categorySlug: string) =>
   locationServicePages.find(
@@ -273,11 +292,15 @@ export const getLocationServicePagesForCategory = (categorySlug: string) =>
 export const getNearbyLocationServiceLinks = (
   page: LocationServicePage,
 ): Array<{ name: string; href: string }> => {
-  const nearby = getNearbyLocationLinks(page.location);
-  return nearby.slice(0, 4).map((loc) => ({
-    name: loc.name,
-    href: `/locations/${loc.slug}/${page.categorySlug}`,
-  }));
+  return page.location.nearby
+    .map((name) => allLocations.find((item) => item.name === name))
+    .filter((loc): loc is LocationPage => Boolean(loc))
+    .filter((loc) => hasLocationServicePage(loc.slug, page.categorySlug))
+    .slice(0, 4)
+    .map((loc) => ({
+      name: loc.name,
+      href: `/locations/${loc.slug}/${page.categorySlug}`,
+    }));
 };
 
 export const getLocationServicePath = (locationSlug: string, categorySlug: string) =>
